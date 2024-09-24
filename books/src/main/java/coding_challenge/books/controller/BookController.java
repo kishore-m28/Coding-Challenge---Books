@@ -3,12 +3,17 @@ package coding_challenge.books.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.service.annotation.PutExchange;
 
+import coding_challenge.books.exception.InvalidIdException;
 import coding_challenge.books.model.Book;
 import coding_challenge.books.service.BookService;
 
@@ -21,12 +26,23 @@ public class BookController {
 	private BookService bookService;
 	
 	@PostMapping("/add")
-	public Book addEmployee(@RequestBody Book book){
+	public Book addBook(@RequestBody Book book){
 		return bookService.addBook(book);
 	}
 	
 	@GetMapping("/all")
-	public List<Book> getAllEmployee() {
+	public List<Book> getAllBook() {
 		return bookService.getAllBook();
+	}
+	
+	@PutMapping("/update/{id}")
+	public ResponseEntity<?> updateBook(@RequestBody Book newBook,@PathVariable int id) {
+		try {
+			Book book = bookService.updateBook(newBook,id);
+			return ResponseEntity.ok(book);
+		} catch (InvalidIdException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		
 	}
 }

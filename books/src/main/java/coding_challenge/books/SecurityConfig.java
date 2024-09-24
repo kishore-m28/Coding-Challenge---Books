@@ -39,6 +39,8 @@ public class SecurityConfig {
                        .requestMatchers("/auth/token").permitAll()
                        .requestMatchers("/book/add").permitAll()
                        .requestMatchers("/book/all").permitAll()
+                       .requestMatchers("/book/update/{id}").permitAll()
+                      
 
                        
                        .anyRequest().authenticated()
