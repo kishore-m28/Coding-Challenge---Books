@@ -37,6 +37,7 @@ public class SecurityConfig {
                .authorizeHttpRequests(auth -> auth
             		   .requestMatchers("/auth/signup").permitAll()
                        .requestMatchers("/auth/token").permitAll()
+                       
                        .requestMatchers("/book/add").permitAll()
                        .requestMatchers("/book/all").permitAll()
                        .requestMatchers("/book/update/{id}").permitAll()
