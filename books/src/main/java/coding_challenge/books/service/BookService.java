@@ -49,6 +49,15 @@ public class BookService {
 			throw new InvalidIdException("Invalid ID Given"); 
 		return optional.get();
 	}
+
+
+	public void deleteBook(String isbn) throws InvalidIdException {
+		Optional<Book> optional =  bookRepository.findByISBN(isbn);
+		if(optional.isEmpty())
+			throw new InvalidIdException("Invalid ID Given"); 
+		
+		bookRepository.deleteByISBN(isbn);
+	}
 	
 	
 	
