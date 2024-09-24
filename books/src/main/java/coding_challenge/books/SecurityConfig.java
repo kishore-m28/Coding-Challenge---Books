@@ -40,6 +40,9 @@ public class SecurityConfig {
                        .requestMatchers("/book/add").permitAll()
                        .requestMatchers("/book/all").permitAll()
                        .requestMatchers("/book/update/{id}").permitAll()
+                       .requestMatchers("/book/one/{isbn}").permitAll()
+                  
+                       
                       
 
                        

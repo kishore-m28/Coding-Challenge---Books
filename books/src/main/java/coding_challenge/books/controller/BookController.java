@@ -43,6 +43,17 @@ public class BookController {
 		} catch (InvalidIdException e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-		
 	}
+	
+	@GetMapping("/one/{isbn}")
+	public ResponseEntity<?> getByIsbn(@PathVariable String isbn) {
+		try {
+			Book book = bookService.getByIsbn(isbn);
+			return ResponseEntity.ok(book);
+		} catch (InvalidIdException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
+	
+	
 }

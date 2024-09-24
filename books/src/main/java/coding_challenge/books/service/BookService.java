@@ -40,6 +40,15 @@ public class BookService {
 		
 		return bookRepository.save(oldBook);
 	}
+
+
+	public Book getByIsbn(String isbn) throws InvalidIdException {
+		Optional<Book> optional = bookRepository.findByISBN(isbn);
+		
+		if(optional.isEmpty())
+			throw new InvalidIdException("Invalid ID Given"); 
+		return optional.get();
+	}
 	
 	
 	
