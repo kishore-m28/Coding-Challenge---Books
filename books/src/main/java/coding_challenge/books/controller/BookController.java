@@ -16,9 +16,9 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
-	/*
+	
 	@PostMapping("/add")
 	public Book addEmployee(@RequestBody Book book){
 		return bookService.addBook(book);
-	}*/
+	}
 }

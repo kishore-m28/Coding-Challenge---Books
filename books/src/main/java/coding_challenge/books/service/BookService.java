@@ -12,11 +12,11 @@ public class BookService {
 	@Autowired
 	private BookRepository bookRepository;
 	
-	/*
+	
 	public Book addBook(Book book) {
 		return bookRepository.save(book);
 	}
-	*/
+	
 	
 	
 	
